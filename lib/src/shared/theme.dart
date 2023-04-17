@@ -6,6 +6,7 @@ Color greyColor = const Color(0xffB0B0B0);
 Color redColor = const Color(0xffE2404D);
 Color blueColor = const Color(0xff0195DD);
 Color whiteColor = const Color(0xffFFFFFF);
+Color orangeColor = const Color(0xffF79420);
 
 TextStyle blackTextStyle = GoogleFonts.inter(
   color: blackColor,
@@ -16,14 +17,17 @@ TextStyle greyTextStyle = GoogleFonts.inter(
 );
 
 TextStyle redTextStyle = GoogleFonts.inter(
-  color: blackColor,
+  color: redColor,
 );
 
 TextStyle blueTextStyle = GoogleFonts.inter(
-  color: blackColor,
+  color: blueColor,
 );
 TextStyle whiteTextStyle = GoogleFonts.inter(
   color: whiteColor,
+);
+TextStyle orangeTextStyle = GoogleFonts.inter(
+  color: orangeColor,
 );
 
 FontWeight light = FontWeight.w300;

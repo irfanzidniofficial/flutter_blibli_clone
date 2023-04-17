@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blibli_clone/src/shared/theme.dart';
 import 'package:flutter_blibli_clone/src/ui/common_widget/custom_carousel_slider_widget.dart';
 
+import '../common_widget/card_product_flash_sale_widget.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -82,15 +84,135 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Container(
-              color: Colors.green,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ItemInfoCardWidget(
+                        label: 'Blipay',
+                        desc: 'Payletter',
+                        value: 'Rp. 351',
+                        icon: Icon(
+                          Icons.account_balance_wallet,
+                          color: blueColor,
+                        ),
+                      ),
+                      const Spacer(),
+                      ItemInfoCardWidget(
+                        label: 'Platinum',
+                        desc: 'Blibli ticket',
+                        value: '27.218',
+                        icon: Icon(
+                          Icons.stars,
+                          color: blackColor,
+                        ),
+                      ),
+                      const Spacer(),
+                      const ItemInfoCardWidget(
+                        label: 'Voucher',
+                        desc: 'Diskon',
+                        value: 'Rp. 351',
+                        icon: Icon(
+                          Icons.monetization_on,
+                          color: Colors.orange,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            SizedBox(
               height: 100,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: const [
                   MenuButton(
                     image: 'assets/icon/ic_all.png',
-                    label: 'semua dkddkdokdpkpd',
+                    label: 'Semua',
+                  ),
+                  MenuButton(
+                    image: 'assets/icon/ic_bill.png',
+                    label: 'Tagihan',
+                  ),
+                  MenuButton(
+                    image: 'assets/icon/ic_chart_blibli.png',
+                    label: 'Bliblimart',
+                  ),
+                  MenuButton(
+                    image: 'assets/icon/ic_phone.png',
+                    label: 'Pulsa',
+                  ),
+                  MenuButton(
+                    image: 'assets/icon/ic_voucher.png',
+                    label: 'Pulsa',
+                  ),
+                  MenuButton(
+                    image: 'assets/icon/ic_tiket.png',
+                    label: 'Tiket',
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  'assets/images/banner_promo.png',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/icon/ic_flash_sale.png',
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.red[100],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Text(
+                        '02:17:39',
+                        style: redTextStyle.copyWith(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    "Lihat Semua",
+                    style: blueTextStyle.copyWith(
+                      fontSize: 16,
+                    ),
                   ),
                 ],
               ),
@@ -98,9 +220,78 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            Row(
+              children: const [
+                CardProductFlashSaleWidget(),
+                SizedBox(
+                  width: 8,
+                ),
+                CardProductFlashSaleWidget(),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ItemInfoCardWidget extends StatelessWidget {
+  final String label;
+  final String value;
+  final String desc;
+  final Widget icon;
+
+  const ItemInfoCardWidget({
+    Key? key,
+    required this.label,
+    required this.value,
+    required this.desc,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            icon,
+            const SizedBox(
+              width: 5,
+            ),
+            Text(
+              label,
+              style: greyTextStyle.copyWith(
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          value,
+          style: blackTextStyle.copyWith(
+            fontSize: 17,
+            fontWeight: bold,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          desc,
+          style: greyTextStyle.copyWith(
+            fontSize: 14,
+          ),
+        )
+      ],
     );
   }
 }
@@ -120,9 +311,9 @@ class MenuButton extends StatelessWidget {
     return Container(
       width: 80,
       height: 100,
-      decoration: BoxDecoration(
-        color: greyColor,
-      ),
+      decoration: const BoxDecoration(
+          // color: greyColor,
+          ),
       child: Column(
         children: [
           Image.asset(
