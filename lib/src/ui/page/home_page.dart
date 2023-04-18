@@ -135,33 +135,69 @@ class HomePage extends StatelessWidget {
               height: 30,
             ),
             SizedBox(
-              height: 100,
+              height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  MenuButton(
-                    image: 'assets/icon/ic_all.png',
-                    label: 'Semua',
-                  ),
-                  MenuButton(
-                    image: 'assets/icon/ic_bill.png',
-                    label: 'Tagihan',
-                  ),
-                  MenuButton(
-                    image: 'assets/icon/ic_chart_blibli.png',
-                    label: 'Bliblimart',
-                  ),
-                  MenuButton(
-                    image: 'assets/icon/ic_phone.png',
-                    label: 'Pulsa',
-                  ),
-                  MenuButton(
-                    image: 'assets/icon/ic_voucher.png',
-                    label: 'Pulsa',
-                  ),
-                  MenuButton(
-                    image: 'assets/icon/ic_tiket.png',
-                    label: 'Tiket',
+                children: [
+                  Column(
+                    children: [
+                      Row(
+                        children: const [
+                          MenuButton(
+                            image: 'assets/icon/ic_all.png',
+                            label: 'Semua',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_bill.png',
+                            label: 'Tagihan',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_chart_blibli.png',
+                            label: 'Bliblimart',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_phone.png',
+                            label: 'Pulsa',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_voucher.png',
+                            label: 'Pulsa',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_tiket.png',
+                            label: 'Tiket',
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          MenuButton(
+                            image: 'assets/icon/ic_tiket.png',
+                            label: 'Tiket',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_promo.png',
+                            label: 'Promo',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_official_store.png',
+                            label: 'Official',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_2x.png',
+                            label: 'Reward',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_barter.png',
+                            label: 'Barter',
+                          ),
+                          MenuButton(
+                            image: 'assets/icon/ic_ramadhan.png',
+                            label: 'Ramadhan',
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -220,17 +256,60 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              children: const [
-                CardProductFlashSaleWidget(),
-                SizedBox(
-                  width: 8,
-                ),
-                CardProductFlashSaleWidget(),
-              ],
+            Container(
+              padding: const EdgeInsets.only(
+                left: 10,
+              ),
+              height: 250,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Row(
+                    children: const [
+                      CardProductFlashSaleWidget(
+                        discount: '17',
+                        discountPrice: 'Rp. 13.000',
+                        image: 'assets/images/product1.png',
+                        percentSales: '20%',
+                        price: '18.000',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CardProductFlashSaleWidget(
+                        discount: '17',
+                        discountPrice: 'Rp. 19.000',
+                        image: 'assets/images/product2.png',
+                        percentSales: '70%',
+                        price: '18.000',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CardProductFlashSaleWidget(
+                        discount: '9',
+                        discountPrice: 'Rp. 18.000',
+                        image: 'assets/images/product3.png',
+                        percentSales: '50%',
+                        price: '22.000',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CardProductFlashSaleWidget(
+                        discount: '21',
+                        discountPrice: 'Rp. 28.000',
+                        image: 'assets/images/product4.png',
+                        percentSales: '87%',
+                        price: '38.000',
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
           ],
         ),
@@ -318,7 +397,7 @@ class MenuButton extends StatelessWidget {
         children: [
           Image.asset(
             image,
-            width: 40,
+            width: 30,
           ),
           const SizedBox(
             height: 10,

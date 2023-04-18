@@ -1,11 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../shared/theme.dart';
 
 class CardProductFlashSaleWidget extends StatelessWidget {
+  final String image;
+  final String price;
+  final String discountPrice;
+  final String percentSales;
+  final String discount;
+
   const CardProductFlashSaleWidget({
-    super.key,
-  });
+    Key? key,
+    required this.image,
+    required this.price,
+    required this.discountPrice,
+    required this.percentSales,
+    required this.discount,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,19 +37,51 @@ class CardProductFlashSaleWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 150,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "assets/images/product1.png",
+          Stack(
+            children: [
+              Container(
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    image,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                  width: 80,
+                  height: 30,
+                  decoration: BoxDecoration(
+                      color: redColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.arrow_drop_down,
+                        color: whiteColor,
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      Text(
+                        '$discount%',
+                        style: whiteTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: semiBold,
+                        ),
+                      )
+                    ],
+                  ))
+            ],
           ),
           const SizedBox(
             height: 5,
@@ -47,7 +91,7 @@ class CardProductFlashSaleWidget extends StatelessWidget {
               left: 8,
             ),
             child: Text(
-              "Rp9.000",
+              discountPrice,
               style: orangeTextStyle.copyWith(
                 fontSize: 18,
                 fontWeight: semiBold,
@@ -62,7 +106,7 @@ class CardProductFlashSaleWidget extends StatelessWidget {
               left: 8,
             ),
             child: Text(
-              "Rp9.000",
+              price,
               style: greyTextStyle.copyWith(
                 fontSize: 18,
                 decoration: TextDecoration.lineThrough,
@@ -83,13 +127,13 @@ class CardProductFlashSaleWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                '87% Terjual',
+                '$percentSales Terjual',
                 style: whiteTextStyle.copyWith(
                   fontSize: 16,
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
